@@ -2,7 +2,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
-import Layout, { siteTitle, Alert } from '../../components/layout';
+import Layout, { siteTitle } from '../../components/layout';
+import Alert from '../../components/alert';
 
 const disableLink = true;
 export default function FirstPost() {

@@ -1,11 +1,3 @@
-// !!! To use CSS Modules, the CSS file name must end with .module.css.
-// import styles from './layout.module.css';
-
-// export default function Layout({ children }) {
-//   //return <div>{children}</div>; // no style
-//   return <div className={styles.container}>{children}</div>;
-// }
-
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
@@ -15,8 +7,7 @@ import Link from 'next/link';
 const name = 'Simon Li';
 export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
-  //console.log("Layout: ", home);
+export default function Layout({ children, home }: { children: React.ReactNode, home?: boolean }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -27,14 +18,15 @@ export default function Layout({ children, home }) {
         />
         <meta
           property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(siteTitle)}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          content={`https://og-image.vercel.app/${encodeURI(
+            siteTitle
+          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
         />
-        <meta name="og:title" content={siteTitle}/>
+        <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home? (
-          // Home page - props: home, like <Layout home>
+        {home ? (
           <>
             <Image
               priority
@@ -47,7 +39,6 @@ export default function Layout({ children, home }) {
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
-          // other pages - <Layout>
           <>
             <Link href="/">
               <a>
@@ -78,24 +69,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  );
-}
-
-import alertStyles from '../styles/alert.module.css';
-import cn from 'classnames';
-
-// <Alert sucess
-export function Alert({ children, type }) {
-  //console.log("Alter: ", type);
-  return (
-    <div
-      className={cn({
-        [alertStyles.success]: !type || type.toLowerCase() === 'success',
-        [alertStyles.warning]: type?.toLowerCase() === 'warning',
-        [alertStyles.error]: type?.toLowerCase() === 'error',
-      })}
-    >
-      {children}
-    </div>
-  );
+  )
 }
