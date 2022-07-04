@@ -6,6 +6,7 @@ import Date from '../components/date';
 import utilStyles from '../styles/utils.module.css';
 
 export default function Home({ allPostsData }) {
+  const doc_type = 'docx'; // pdf, csv, xlsx, docx
   return (
     //<Layout home="1"> -- home: "1" 
     //<Layout home> -- home: true
@@ -21,6 +22,10 @@ export default function Home({ allPostsData }) {
         </p>
         <Link href="/posts/first-post">
           <a>This is first post page - routing sample</a>
+        </Link>
+        <br/>
+        <Link href={`/help/${doc_type}`}>
+          <a>View document(pdf, csv, xlsx, docx) - routing sample</a>
         </Link>
       </section>
       {/* Add this <section> tag below the existing <section> tag */}
