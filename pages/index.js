@@ -27,6 +27,10 @@ export default function Home({ allPostsData }) {
         <Link href={`/help/${doc_type}`}>
           <a>View document(pdf, csv, xlsx, docx) - routing sample</a>
         </Link>
+        <br/>
+        <Link href={`/api/ping`}>
+          <a>my public ip address or any other ip via /api/ping?ip=IPAddress</a>
+        </Link>
       </section>
       {/* Add this <section> tag below the existing <section> tag */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
