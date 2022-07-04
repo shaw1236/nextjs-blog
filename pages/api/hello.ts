@@ -1,5 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default (_: NextApiRequest, res: NextApiResponse) => {
-  res.status(200).json({ text: 'Hello Typescript API from next.js' })
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.query.name)
+    res.send({ message: `Hello ${req.query.name}!`});
+  else 
+    res.send({ message: 'Hello API from next.js SSR'});
 }
