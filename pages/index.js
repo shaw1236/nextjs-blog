@@ -1,4 +1,5 @@
 // https://nextjs.org/learn/basics/api-routes
+import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
@@ -6,7 +7,7 @@ import Date from '../components/date';
 import utilStyles from '../styles/utils.module.css';
 
 export default function Home({ allPostsData }) {
-  const doc_type = 'docx'; // pdf, csv, xlsx, docx
+  const [ docType, setDocType ] = useState("pdf");
   return (
     //<Layout home="1"> -- home: "1" 
     //<Layout home> -- home: true
@@ -24,10 +25,16 @@ export default function Home({ allPostsData }) {
           <a>This is first post page - routing sample</a>
         </Link>
         <br/>
-        <Link href={`/help/${doc_type}`}>
-          <a>View document(pdf, csv, xlsx, docx) - routing sample</a>
-        </Link>
-        <br/>
+        <Link href={`/sample/${docType}`}>
+          <a>View document {' '}</a>
+        </Link> 
+        <select value={docType} onChange={(e) => { setDocType(e.target.value) }} title='select file type'>
+          <option value="pdf">pdf</option>
+          <option value="csv">csv</option>
+          <option value="docx">docx</option>
+          <option value="xlsx">xlsx</option>
+        </select>
+        <br/> 
         <Link href={`/api/ping`}>
           <a>my public ip address or any other ip via /api/ping?ip=IPAddress</a>
         </Link>

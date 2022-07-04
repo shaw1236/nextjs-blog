@@ -6,7 +6,6 @@ const FileViewer = dynamic(() => import('react-file-viewer'), {
 
 export default function Viewer({ type }) {
     // pdf csv xslx docx Video: mp4, webm Audio: mp3
-    //const types = ['csv', 'pdf', 'docx', 'xlsx', 'mp4', 'mp3'];
     const file = `sample.${type}`;
     return (
         <FileViewer fileType={ type } filePath={ `/${file}` } />
@@ -14,12 +13,9 @@ export default function Viewer({ type }) {
 };
 
 export async function getStaticPaths() {
-    const paths = [
-        { params: { type:  'pdf' } },
-        { params: { type:  'csv' } },
-        { params: { type:  'xlsx' } }, 
-        { params: { type:  'docx' } }            
-    ]
+    // pdf csv xslx docx Video: mp4, webm Audio: mp3
+    const supportedTypes = ['csv', 'pdf', 'docx', 'xlsx', 'mp4', 'mp3'];
+    const paths = supportedTypes.map(type =>  ({ params: { type } }));
     return { paths, fallback: false };
 }
 
