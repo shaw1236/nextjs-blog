@@ -11,11 +11,20 @@
 //     );
 // };
 
+import Layout, { siteTitle } from '../../components/layout';
 import MyFileViewer from '../../components/myfileviewer';
+import Head from 'next/head';
 
 export default function Viewer({ type }) {
     // pdf csv xslx docx Video: mp4, webm Audio: mp3
-    return (<MyFileViewer file={ `sample.${type}` } />)
+    return (
+      <>
+        <Head>
+          <title>{ siteTitle }</title>
+        </Head>
+        <MyFileViewer file={ `sample.${type}` } />
+      </>
+    );
 };
 
 export async function getStaticPaths() {

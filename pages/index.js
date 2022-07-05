@@ -1,13 +1,23 @@
-// https://nextjs.org/learn/basics/api-routes
+// https://nextjs.org/learn
+//   
+// Purpose: nextjs sample app
+// Author : Simon Li
+// Date   : 2022-07-01
+// 
+// React and Next libs 
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+// Components
 import Layout, { siteTitle } from '../components/layout';
 import Date from '../components/date';
+// CSS modules
 import utilStyles from '../styles/utils.module.css';
 
 export default function Home({ allPostsData }) {
   const [ docType, setDocType ] = useState("pdf");
+  const [ ip, setIPAddress ] = useState("");
+
   return (
     //<Layout home="1"> -- home: "1" 
     //<Layout home> -- home: true
@@ -15,12 +25,18 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      {/* Self Profile */}
       <section className={utilStyles.headingMd}>
-        <p>Hello, I&#39;m Simon, a Web Development Lead, senior software engineer, full stack web developer &amp; database expert</p>
+        <p>Hello, I&#39;m Simon, Web Development Lead, Senior Software Engineer, Full Stack Web Developer &amp; Database Expert.</p>
         <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+          (This is a sample website - I am building a site like this on{' '}
+          <a href="https://nextjs.org/learn">Next.js tutorial</a>.)
         </p>
+      </section>
+
+      {/* Routing, API, Link, HTML input */}
+      <section className={utilStyles.headingMd}>  
+        {/* Routes samples  */}
         <Link href="/posts/first-post">
           <a>This is first post page - routing sample</a>
         </Link>
@@ -28,17 +44,26 @@ export default function Home({ allPostsData }) {
         <Link href={`/sample/${docType}`}>
           <a>View sample document {' '}</a>
         </Link> 
-        <select value={docType} onChange={(e) => { setDocType(e.target.value) }} title='select file type'>
+        {/* UI select, input, dynamic route */}
+        <select value={docType} onChange={(e) => { setDocType(e.target.value) }} title='Select File Type'>
           <option value="pdf">pdf</option>
           <option value="csv">csv</option>
           <option value="docx">docx</option>
           <option value="xlsx">xlsx</option>
         </select>
         <br/> 
+        {/* api routing, UI input */}
         <Link href={`/api/ping`}>
-          <a>my public ip address or any other ip via /api/ping?ip=IPAddress</a>
+          <a>my public ip address</a>
         </Link>
+        {', '}
+        <Link href={`/api/ping?ip=${ip}`}>
+          <a>check ip {' '}</a>
+        </Link>
+        <input placeholder="IP Address" type="text" value={ip} maxLength = "15"
+          onChange={(e) => { setIPAddress(e.target.value) }} title='Select IP Address'/>
       </section>
+
       {/* Add this <section> tag below the existing <section> tag */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
