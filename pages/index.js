@@ -26,7 +26,7 @@ export default function Home({ allPostsData }) {
         </Link>
         <br/>
         <Link href={`/sample/${docType}`}>
-          <a>View document {' '}</a>
+          <a>View sample document {' '}</a>
         </Link> 
         <select value={docType} onChange={(e) => { setDocType(e.target.value) }} title='select file type'>
           <option value="pdf">pdf</option>

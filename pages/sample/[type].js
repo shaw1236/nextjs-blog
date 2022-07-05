@@ -1,15 +1,21 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
-const FileViewer = dynamic(() => import('react-file-viewer'), {
-    ssr: false
-});
+// const FileViewer = dynamic(() => import('react-file-viewer'), {
+//     ssr: false
+// });
+// export default function Viewer({ type }) {
+//     // pdf csv xslx docx Video: mp4, webm Audio: mp3
+//     const file = `sample.${type}`;
+//     return (
+//         <FileViewer fileType={ type } filePath={ `/${file}` } />
+//     );
+// };
+
+import MyFileViewer from '../../components/myfileviewer';
 
 export default function Viewer({ type }) {
     // pdf csv xslx docx Video: mp4, webm Audio: mp3
-    const file = `sample.${type}`;
-    return (
-        <FileViewer fileType={ type } filePath={ `/${file}` } />
-    );
+    return (<MyFileViewer file={ `sample.${type}` } />)
 };
 
 export async function getStaticPaths() {
